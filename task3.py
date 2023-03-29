@@ -18,7 +18,7 @@ in for a dead rat and a string to swing it with—and so on, and so on,
 hour after hour. And when the middle of the afternoon came, from being a
 poor poverty, stricken boy in the .... morning, Tom was literally
 rolling in wealth."""
-print(adventures_of_tom_sawer)
+#print(adventures_of_tom_sawer)
 # task 01 ==
 """ Дані у строці adwentures_of_tom_sawer розбиті випадковим чином, через помилку.
 треба замінити кінець абзацу на пробіл .replace("\n", " ")"""
@@ -39,59 +39,64 @@ text_clear_dots = text_clear_br.replace("....", " ")
 """
 
 # Очищення тексту від зайвих пробілів
-text_clear_spaces = text_clear_dots.replace("  ", "").strip()
-print("free from spaces",text_clear_spaces)
+text_clear = text_clear_dots.replace("  ", "")
+print("Очищений текст виглядає ось так: \n",text_clear)
 
 # task 04
 """ Виведіть, скількі разів у тексті зустрічається літера "h"
 """
-h_letter = adventures_of_tom_sawer.count("h")
+h_letter = text_clear.count("h")
 print(f"Літера \"h\" зустрічається в тексті {h_letter} разів.")
 
 # task 05
 """ Виведіть, скільки слів у тексті починається з Великої літери?
 """
 upper_count = 0
-for i in adventures_of_tom_sawer:
+for i in text_clear:
     if i.isupper():
         upper_count += 1
-print(upper_count)
+print(f"В тексті {upper_count} слів починається з великої літери.")
 
 
 # task 06
 """ Виведіть позицію, на якій слово Tom зустрічається вдруге
 """
-first_Tom = text_clear_spaces.find("Tom")
-second_Tom = text_clear_spaces.find("Tom", first_Tom + 1)
-print(second_Tom)
+# Шукаємо де "Том" зустрічається вперше
+first_Tom = text_clear.find("Tom")
+# Шукаємо де "Том" зустрічається вдруге
+second_Tom = text_clear.find("Tom", first_Tom + 1)
+print(f"Вдруге \"Tom\" зустрічається в тексті на позиції {second_Tom}.")
 
 # task 07
 """ Розділіть змінну adwentures_of_tom_sawer по кінцю речення.
 Збережіть результат у змінній adwentures_of_tom_sawer_sentences
 """
-adventures_of_tom_sawer_sentences = text_clear_spaces.split(".")
-print(adventures_of_tom_sawer_sentences)
+adventures_of_tom_sawer_sentences_spaces = text_clear.split(".")
+adventures_of_tom_sawer_sentences = [i.strip() for i in adventures_of_tom_sawer_sentences_spaces]
+#print(adventures_of_tom_sawer_sentences)
 
 # task 08
 """ Виведіть четверте речення з adwentures_of_tom_sawer_sentences.
 Перетворіть рядок у нижній регістр.
 """
-third_sentence = adventures_of_tom_sawer_sentences[3]
-print(third_sentence.lower())
+fourth_sentence = adventures_of_tom_sawer_sentences[3]
+print("Четверте речення в нижньому регістрі: ", fourth_sentence.lower())
 
 # task 09
 """ Перевірте чи починається якесь речення з "By the time".
 """
 string_for_search = "By the time"
-if text_clear_spaces.find(string_for_search):
-    print(f"Речення що починається з {string_for_search} присутнє в тексті!")
-else:
-    print(f"Речення що починається з {string_for_search} відсутнє в тексті!")
+for i in adventures_of_tom_sawer_sentences:
+    if i.startswith(string_for_search):
+        print(f"Речення що починається з \"{string_for_search}\" присутнє в тексті!")
+    else:
+        pass
+
 
 # task 10
 """ Виведіть кількість слів останнього речення з adwentures_of_tom_sawer_sentences.
 """
 
-the_last_sentence = adventures_of_tom_sawer_sentences[-1]
-word_count = len(the_last_sentence.split(" "))
-print(word_count)
+the_last_sentence = adventures_of_tom_sawer_sentences[-2]
+word_count = len(the_last_sentence.split())
+print(f"В останньому реченні {word_count} слів.")
