@@ -34,11 +34,15 @@ else:
 + напишіть цикл for що перебере і обробить всі значення списку alien_color
 """
 
-alien_color = 'red'
-if alien_color == 'green':
-    print("You gain 5 points!")
-else:
-    print("You gain 10 points!")
+alien_color = ('green', 'yellow', 'red')
+
+for color in alien_color:
+    if color == 'green':
+        print("You gain 5 points!")
+    elif color == 'red':
+        print("You gain 15 points!")
+    else:
+        print("You gain 10 points!")
 
 
 # task 5
@@ -47,6 +51,12 @@ else:
 надрукуйте повідомлення про те, що ви додасте цю начинку до їхньої піци.
 """
 
+while True:
+    pizza_topping = input("Add a topping:> ")
+    if pizza_topping == "quit":
+        break
+    print(f"Топпінг {pizza_topping} був доданий до вашої піци!")
+
 # task 6
 """  Напишіть програму, яка знаходить суму всіх цифр натурального числа, яке вводить користувач.
 Для перебору вводу від користувача використовуйте цикл. Виведіть суму цифр числа на екран.
@@ -54,6 +64,11 @@ else:
 Введіть натуральне число: 12345
 Сума цифр числа 12345: 15
 """
+number = input("Enter a number: ")
+sum = 0
+for digits in number:
+    sum += int(digits)
+print(f"Сума цифр числа {number} дорівнює {sum}.")
 
 # task 7
 """  Потрібно написати програму, яка просить користувача ввести числа, доки він не введе 0.
@@ -62,6 +77,14 @@ else:
 Після введеня 0 показує результат сумування.
 Розв'язати з використанням циклу while та break
 """
+summa = 0
+
+while True:
+    num = int(input("Введіть число чи 0 для завершення: "))
+    if num == 0:
+        break
+    summa += num
+print(f"Сума введених чисел дорівнює {summa}.")
 
 # task 8
 """  З використанням циклу for реалізуйте гру "Вгадай число".
@@ -76,16 +99,35 @@ guesses = 0
 max_guesses = 5
 print("Вгадайте число від 1 до 20 за 5 спроб!")
 
+for guesses in range(1, max_guesses + 1):
+    guess = int(input("Введіть своє припущення: "))
+    if guess < secret_number:
+        print("Загадане число більше!")
+    elif guess > secret_number:
+        print(f"Загадане число менше!")
+    else:
+        print("Ви вгадали число!")
+        break
+
+if guess != secret_number:
+    print(f"Ви не вгадали. Число було {secret_number}.")
+
+
 # task 9
 """  Задача з використанням циклу for та continue. Задано список фруктів 'fruits'
 потрібно вивести на екран всі елементи списку, окрім "orange".
 """
 fruits = ["apple", "banana", "orange", "grape", "mango"]
 
+for fruit in fruits:
+    if fruit == "orange":
+        continue
+    print(fruit)
+
 # task 10
 """  Задано список чисел numbers, потрібно знайти список квадратів
 парних чисел зі списку. Спробуйте використати if та цикл for в один рядок.
 """
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-result = ["Відповідь вставте сюди"]
+result = [x ** 2 for x in numbers if x % 2 == 0]
 print(result)  #  [4, 16, 36, 64, 100]

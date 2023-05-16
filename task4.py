@@ -10,7 +10,7 @@ print(small_set)
 count = 0
 for i in small_list:
     count += i
-№print(count, len(small_set))
+#print(count, len(small_set))
 print(f"Середньє арифметичне усіх елементів у спиcку \"small_list\": {count / len(small_set)}")
 
 # task 3. Перевірте, чи є в списку big_list дублікати
